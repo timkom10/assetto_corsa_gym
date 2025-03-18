@@ -101,7 +101,7 @@ def main():
 
     agent = Agent(env=env, test_env=env, algo=algo, log_dir=config.work_dir,
                   device=device, seed=config.seed, **config.Agent, wandb_logger=wandb_logger)
-
+    print(config.load_offline_data)
     if not args.test and config.load_offline_data:
         data_config_file = os.path.abspath(r"./ac_offline_train_paths.yml")
         logger.info("Loading offline dataset...")
@@ -130,7 +130,7 @@ def main():
         agent.pre_train()
 
     if args.load_path is not None:
-        load_buffer = False if args.test else True
+        load_buffer = False if args.test or not config.load_offline_data else True
         agent.load(args.load_path, load_buffer=load_buffer)
 
     if args.test:

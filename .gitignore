@@ -1,9 +1,10 @@
 # user
 results
-data/data_sets
+AssettoCorsaGymDataSet/data_sets
 archive
 *.ptorch
 *.pkl?
+ModelOutputs/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
